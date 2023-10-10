@@ -1,0 +1,234 @@
+/* Estilos para la clase "App" */
+.App {
+  /* Centra el elemento horizontalmente en la pantalla */
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 768px; /* Ancho máximo para pantallas medianas */
+  margin-top: 1rem; /* Espacio en la parte superior */
+  padding-top: 1.25rem; /* Relleno vertical superior */
+  padding-bottom: 1.25rem; /* Relleno vertical inferior */
+  padding-left: 8rem; /* Relleno horizontal izquierdo */
+  padding-right: 8rem; /* Relleno horizontal derecho */
+  /* Fondo degradado desde blue hasta cyan */
+  background: linear-gradient(
+    to bottom right,
+    blue,
+    cyan
+  );
+  /* Sombra con efecto de elevación */
+  box-shadow: 0 4px 6px -1px rgba(blue, 0.4), 0 2px 4px -1px rgba(blue, 0.2);
+  /* Altura ajustada automáticamente según el contenido */
+  height: auto;
+  /* Elimina el margen en los textos */
+}
+
+/* Estilos para la clase "search" */
+.search {
+  /* Elementos flexibles en fila con alineación centrada */
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  /* Espacio en la parte superior, ajustable según necesidades */
+  margin-top: 1.5rem;
+  /* Estilo para el contenedor "div" dentro de "search" */
+  div {
+    /* Ocupa el 75% del ancho del contenedor padre */
+    width: 75%;
+    align-items: center;
+    /* Estilos para el elemento "input" dentro de "div" */
+    input {
+      /* Tamaño del texto */
+      font-size: 1.25rem;
+      /* Relleno uniforme en todas las direcciones */
+      padding: 0.5rem;
+      /* Ancho completo del contenedor "div" */
+      width: 75%;
+      /* Elimina el contorno al enfocar */
+      outline: none;
+      /* Transforma el texto a mayúsculas y minúsculas */
+      text-transform: capitalize;
+    }
+    /* Estilos para la clase "icon" dentro de "div" */
+    .icon {
+      padding-left: 1rem;
+      /* Color de texto blanco */
+      color: white;
+      /* Cursor en forma de puntero */
+      cursor: pointer;
+      width: 1rem;
+      height: 1rem;
+      /* Transición suave de propiedades con duración de 0.2 segundos */
+      transition: all 0.2s ease-out;
+      /* Efecto de escala al hacer hover */
+      &:hover {
+        transform: scale(1.25);
+      }
+    }
+  }
+}
+
+/* Estilos para la clase "time" */
+.time {
+  /* Elementos flexibles en fila con alineación centrada */
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  /* Espacio en la parte superior, ajustable según necesidades */
+  margin-top: 0.5rem;
+  /* Estilos para el elemento "p" dentro de "time" */
+  p {
+    /* Color de texto blanco */
+    color: white;
+    /* Tamaño de fuente */
+    font-size: 1.25rem;
+    /* Peso de fuente ligero */
+    font-weight: 200;
+  }
+}
+
+/* Estilos para la clase "location" */
+.location {
+  /* Elementos flexibles */
+  display: flex;
+  /* Alineación vertical y horizontal centrada */
+  align-items: center;
+  justify-content: center;
+  /* Elimina el margen predeterminado del elemento "p" */
+  p {
+    margin-top: 0;
+    margin-bottom: 0;
+    /* Color de texto blanco */
+    color: white;
+    /* Tamaño de fuente grande */
+    font-size: 1.9rem;
+  }
+}
+
+/* Estilos para la clase "skyImage" */
+.skyImage {
+  width: 4rem;
+  height: 4rem;
+}
+
+/* Estilos para la clase "weatherDetails" */
+.weatherDetails {
+  /* Estilos para la clase "skyclimate" dentro de "weatherDetails" */
+  .skyclimate {
+    /* Elementos flexibles con alineación centrada */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* Tamaño de fuente */
+    font-size: 1.25rem;
+    /* Color de texto cyan */
+    color: cyan;
+  }
+
+  /* Estilos para la clase "actualTemperature" dentro de "weatherDetails" */
+  .actualTemperature {
+    /* Elementos flexibles en fila con alineación centrada */
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    /* Color de texto blanco */
+    color: white;
+    /* Espacio en la parte superior */
+    padding-top: 0.75rem;
+    /* Estilos para el elemento "p" dentro de "actualTemperature" */
+    p {
+      /* Tamaño de fuente grande */
+      font-size: 3rem;
+    }
+
+    /* Estilos para la clase "details" dentro de "actualTemperature" */
+    .details {
+      /* Elementos flexibles en columna con espacio vertical entre ellos */
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      /* Estilos para el elemento "div" dentro de "details" */
+      div {
+        /* Elementos flexibles con peso de fuente ligero */
+        display: flex;
+        font-weight: 300;
+        /* Tamaño de fuente pequeño */
+        font-size: 0.875rem;
+        align-items: center;
+        justify-content: center;
+        /* Estilos para el elemento "span" dentro de "div" */
+        span {
+          /* Peso de fuente medio */
+          font-weight: 500;
+          /* Margen izquierdo */
+          margin-left: 0.25rem;
+        }
+      }
+    }
+  }
+
+  /* Estilos para la clase "todayTemperature" dentro de "weatherDetails" */
+  .todayTemperature {
+    /* Elementos flexibles en fila con alineación centrada y espacio entre ellos */
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    /* Color de texto blanco */
+    color: white;
+    /* Tamaño de fuente pequeño */
+    font-size: 1rem;
+    /* Espacio en la parte superior */
+    padding-top: 0.75rem;
+    /* Estilos para el elemento "p" dentro de "todayTemperature" */
+    p {
+      /* Estilos para el elemento "span" dentro de "p" */
+      span {
+        /* Tamaño de fuente */
+        font-size: 1.1rem;
+      }
+    }
+  }
+}
+
+/* Estilos para la clase "forecast" */
+.forecast {
+  /* Color de texto blanco */
+  color: white;
+  /* Elementos flexibles en columna con alineación al inicio */
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  /* Espacio en la parte superior, ajustable según necesidades */
+  margin-top: 0.5rem;
+  /* Estilos para el elemento "hr" dentro de "forecast" */
+  hr {
+    /* Ancho completo */
+    width: 100%;
+    /* Elimina el margen predeterminado del elemento "hr" */
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  /* Estilos para la clase "carousel" dentro de "forecast" */
+  .carousel {
+    /* Elementos flexibles en fila con alineación centrada y espacio entre ellos */
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    /* Estilos para el elemento "div" dentro de "carousel" */
+    div {
+      /* Elementos flexibles en columna con espacio vertical entre ellos */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      /* Tamaño de fuente pequeño */
+      p {
+        font-size: 0.875rem;
+      }
+    }
+  }
+}
