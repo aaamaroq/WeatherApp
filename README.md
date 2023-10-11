@@ -7,6 +7,10 @@
 
 La Weather App es una aplicación web que te permite consultar el clima actual y la previsión del tiempo en cualquier lugar del mundo. Puedes buscar una ubicación específica o utilizar la geolocalización para obtener datos meteorológicos precisos.
 
+![image](https://github.com/aaamaroq/WeatherApp/assets/100299154/c3adfe70-49e4-4358-af6a-cc1c9109a691)
+![image](https://github.com/aaamaroq/WeatherApp/assets/100299154/7f6ea735-97fc-43cc-9bf0-17f6a18dd38d)
+
+
 ## Tecnologías Utilizadas
 
 - **HTML5**: Lenguaje de marcado para la estructura de la página web.
@@ -24,6 +28,10 @@ El propósito de esta aplicación es proporcionar a los usuarios información ac
 ## Descripción
 
 La Weather App se desarrolló utilizando React, un popular marco de trabajo de JavaScript. La aplicación se integra con servicios de datos meteorológicos para recuperar información precisa y en tiempo real. Utiliza una interfaz de usuario amigable que permite a los usuarios buscar ubicaciones y ver detalles meteorológicos, como la temperatura, la humedad y la velocidad del viento. Además, ofrece una vista de pronóstico tanto para el día actual como para los próximos días.
+
+# Consulta
+
+Puede consultar la aplicación en el despliegue realizado en el siguiente [enlace](https://weatherapp-azure-eta.vercel.app/).
 
 ## Cómo Se Ha Programado
 
@@ -44,7 +52,7 @@ Para ejecutar la aplicación en tu entorno local, sigue estos pasos:
 3. Navega hasta el directorio del proyecto:
 
    ```bash
-   cd weather-app
+   cd weatherApp
    ```
 
 4. Instala las dependencias del proyecto ejecutando:
