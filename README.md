@@ -1,46 +1,65 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+---
 
-## Available Scripts
+# Weather App
 
-In the project directory, you can run:
+## Introducción
 
-### `npm start`
+La Weather App es una aplicación web que te permite consultar el clima actual y la previsión del tiempo en cualquier lugar del mundo. Puedes buscar una ubicación específica o utilizar la geolocalización para obtener datos meteorológicos precisos.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Tecnologías Utilizadas
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- **HTML5**: Lenguaje de marcado para la estructura de la página web.
+- **CSS3**: Hojas de estilo en cascada para el diseño y la presentación.
+- **JavaScript**: Lenguaje de programación para la interactividad del lado del cliente.
+- **React**: Biblioteca de JavaScript para la creación de la interfaz de usuario.
+- **TypeScript**: Superset de JavaScript para un desarrollo más robusto.
+- **Sass**: Preprocesador CSS para estilos más avanzados.
+- **DotEnv**: Para gestionar las variables de entorno.
 
-### `npm test`
+## Propósito
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+El propósito de esta aplicación es proporcionar a los usuarios información actualizada sobre las condiciones meteorológicas en cualquier lugar del mundo. Ya sea que necesites conocer el pronóstico del tiempo antes de un viaje o simplemente estés interesado en el clima de tu ubicación actual, la Weather App te brinda la información que necesitas de manera rápida y sencilla.
 
-### `npm run build`
+## Descripción
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+La Weather App se desarrolló utilizando React, un popular marco de trabajo de JavaScript. La aplicación se integra con servicios de datos meteorológicos para recuperar información precisa y en tiempo real. Utiliza una interfaz de usuario amigable que permite a los usuarios buscar ubicaciones y ver detalles meteorológicos, como la temperatura, la humedad y la velocidad del viento. Además, ofrece una vista de pronóstico tanto para el día actual como para los próximos días.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Cómo Se Ha Programado
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+La aplicación se ha programado siguiendo las mejores prácticas de desarrollo web con React. Se ha dividido en varios componentes, como "HeaderApp", "Search", "TimeAndLocation", "Temperature", "Forecast", "WeatherDetails" y "WeatherModal". Cada componente tiene su función específica en la aplicación y se comunica con otros para mostrar la información meteorológica de manera clara y ordenada.
 
-### `npm run eject`
+## Cómo Instalar
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Para ejecutar la aplicación en tu entorno local, sigue estos pasos:
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+1. Asegúrate de tener Node.js instalado en tu computadora. Si no lo tienes, puedes descargarlo [aquí](https://nodejs.org/).
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+2. Clona este repositorio de GitHub en tu máquina:
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+   ```bash
+   git clone https://github.com/tuusuario/weather-app.git
+   ```
 
-## Learn More
+3. Navega hasta el directorio del proyecto:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+   ```bash
+   cd weather-app
+   ```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+4. Instala las dependencias del proyecto ejecutando:
+
+   ```bash
+   npm install
+   ```
+
+5. Una vez completada la instalación, inicia la aplicación con el siguiente comando:
+
+   ```bash
+   npm start
+   ```
+
+6. La aplicación se abrirá en tu navegador web predeterminado. ¡Ahora puedes buscar el clima en cualquier lugar del mundo!
+
+
+---

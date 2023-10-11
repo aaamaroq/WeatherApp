@@ -14,9 +14,22 @@ import fogImage from '../images/fog.png';
 const API_KEY: string = "d3f3bdcdfddd816a48b7cbdd6e66b526";
 const BASE_URL: string = "https://api.openweathermap.org/data/2.5";
 
-export type Query = { q: string } | { lat: number; lon: number };
+/**
+ * Tipo de datos para parámetros de consulta.
+ * @typedef {object} queryData
+ * @property {string} q - Consulta por nombre de ciudad.
+ * @property {number} lat - Latitud para la búsqueda por coordenadas.
+ * @property {number} lon - Longitud para la búsqueda por coordenadas.
+ */
 
-// Función para obtener datos meteorológicos
+// Función para obtener datos meteorológicos.
+/**
+ * Obtiene datos meteorológicos de la API.
+ *
+ * @param {string} infoType - Tipo de información meteorológica (por ejemplo, "weather" o "onecall").
+ * @param {Object} searchParams - Parámetros de búsqueda para la solicitud.
+ * @returns {Promise<any>} - Promesa que resuelve con los datos obtenidos.
+ */
 const getWeatherData = (
   infoType: string,
   searchParams: Record<string, any>
@@ -33,10 +46,15 @@ const getWeatherData = (
   return fetch(url.toString()).then((res) => res.json());
 };
 
-// Función para formatear los datos meteorológicos actuales
+// Función para formatear los datos meteorológicos actuales.
+/**
+ * Formatea los datos meteorológicos actuales.
+ *
+ * @param {Object} data - Datos crudos obtenidos de la API.
+ * @returns {Object} - Datos formateados con información relevante.
+ */
 const formatCurrentWeather = (data: any): Record<string, any> => {
   // Desestructurar los datos para extraer la información necesaria
-
   const {
     coord: { lat, lon },
     main: { temp, feels_like, temp_min, temp_max, humidity },
@@ -70,7 +88,13 @@ const formatCurrentWeather = (data: any): Record<string, any> => {
   };
 };
 
-// Función para formatear los datos del pronóstico meteorológico
+// Función para formatear los datos del pronóstico meteorológico.
+/**
+ * Formatea los datos del pronóstico meteorológico.
+ *
+ * @param {Object} data - Datos crudos del pronóstico meteorológico obtenidos de la API.
+ * @returns {Object} - Datos formateados con información relevante.
+ */
 const formatForecastWeather = (data: any): Record<string, any> => {
   let { timezone, daily, hourly } = data;
   daily = daily.slice(1, 6).map((d: any) => {
@@ -92,7 +116,13 @@ const formatForecastWeather = (data: any): Record<string, any> => {
   return { timezone, daily, hourly };
 };
 
-// Función para obtener datos meteorológicos formateados
+// Función para obtener datos meteorológicos formateados.
+/**
+ * Obtiene datos meteorológicos formateados que incluyen datos actuales y pronóstico.
+ *
+ * @param {Object} searchParams - Parámetros de búsqueda para la solicitud.
+ * @returns {Promise<Object>} - Promesa que resuelve con los datos formateados.
+ */
 const getFormattedWeatherData = async (
   searchParams: Record<string, any>
 ): Promise<Record<string, any>> => {
@@ -115,7 +145,15 @@ const getFormattedWeatherData = async (
   return { ...formattedCurrentWeather, ...formattedForecastWeather };
 };
 
-// Función para formatear la hora local
+// Función para formatear la hora local.
+/**
+ * Formatea un valor de tiempo en segundos en la hora local especificada.
+ *
+ * @param {number} secs - Valor de tiempo en segundos.
+ * @param {string} zone - Zona horaria para la conversión.
+ * @param {string} format - Formato de salida (opcional).
+ * @returns {string} - Hora local formateada.
+ */
 const formatToLocalTime = (
   secs: number,
   zone: string,
@@ -124,7 +162,12 @@ const formatToLocalTime = (
   return DateTime.fromSeconds(secs).setZone(zone).toFormat(format);
 };
 
-
+/**
+ * Obtiene la URL de la imagen correspondiente a un código de icono meteorológico.
+ *
+ * @param {string} code - Código de icono meteorológico.
+ * @returns {string} - URL de la imagen.
+ */
 const iconUrlFromCode = (code: string) => {
   switch (code) {
     case "01d":
@@ -159,7 +202,10 @@ const iconUrlFromCode = (code: string) => {
   }
 };
 
-
+// Exportar la función principal que obtiene datos meteorológicos formateados.
 export default getFormattedWeatherData;
 
+// Exportar funciones auxiliares.
 export { formatToLocalTime, iconUrlFromCode };
+
+export type queryData = { q: string } | { lat: number; lon: number };

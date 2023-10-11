@@ -1,63 +1,136 @@
-/* Estilos para la clase "App" */
-body {
+/* Estilos base para el documento HTML */
+html {
+  min-height: 100%;
   font-family: "Lato", sans-serif;
-  background: linear-gradient(
-    to bottom right,
-    rgb(254, 254, 254),
-    rgb(6, 237, 237)
-  );
- 
-  display: flex;
-  justify-content: center;
-  
-
+  background: linear-gradient(var(--lightBgStart), var(--lightBgEnd));
+  --lightBtn: #050a4a;
+  --lightBgStart: cyan;
+  --lightBgEnd: lightblue; /* Cambia este color al que desees para el degradado */
+  --lightBox: rgba(255, 255, 255, 0.9);
 }
 
+/* Estilos para el tema oscuro del documento HTML */
+html[data-theme="dark"] {
+  font-family: "Lato", sans-serif;
+  background: linear-gradient(var(--darkBgStart), var(--darkBgEnd));
+  --lightBtn: #ffbd07;
+  --darkBgStart: #1f044e;
+  --darkBgEnd: #0a1039; /* Cambia este color al que desees para el degradado */
+  --lightBox: rgba(5, 26, 51, 0.9);
+}
 
+/* Estilos para la sección de encabezado */
+header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 14px;
+}
+
+/* Estilos para el interruptor de modo oscuro */
+.DarkModeToggle {
+  p {
+    font-weight: 300;
+    color: var(--lightColor);
+  }
+  input[type="checkbox"] {
+    height: 0;
+    width: 0;
+    visibility: hidden;
+  }
+  label {
+    cursor: pointer;
+    text-indent: -9999px;
+    width: 55px;
+    height: 30px;
+    background: var(--lightBtn);
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100px;
+    position: relative;
+    &:after {
+      content: "";
+      background: #fff;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      position: absolute;
+      top: 5px;
+      left: 4px;
+      transition: cubic-bezier(0.68, -0.55, 0.27, 01.55) 320ms;
+    }
+  }
+  input:checked + label {
+    background: #ffbd07;
+    &:after {
+      left: calc(100% - 5px);
+      transform: translateX(-100%);
+    }
+  }
+}
+
+/* Estilos para las transiciones en HTML */
+html.transition,
+html.transition *,
+html.transition *:before,
+html.transition *:after {
+  transition: cubic-bezier(0.68, -0.55, 0.27, 01.55) 420ms !important;
+  transition-delay: 0 !important;
+}
+
+/* Estilos para el cuerpo de la aplicación en modo oscuro */
+body.dark-mode {
+  background: linear-gradient(to bottom right, rgb(3, 16, 39), rgb(2, 16, 29));
+}
+
+/* Estilos para la etiqueta h1 en el cuerpo */
 body > h1 {
   margin-top: 0;
   margin-bottom: 0;
-  /* Color de texto blanco */
-
-  /* Tamaño de fuente grande */
   font-size: 1.9rem;
 }
 
-.reactApp {
-  width: 100%;
-  padding: 0px 16px;
+/* Estilos para la raíz del contenido de la aplicación */
+#root {
+  margin: 7% 7%;
 }
 
-.reactApp > div {
+/* Estilos para el contenedor principal de la aplicación */
+.reactApp {
   width: 100%;
+}
+
+/* Estilos para los elementos dentro del contenedor principal */
+.reactApp > div {
   color: rgb(74, 111, 161);
   border-radius: 26px;
   box-shadow: rgba(0, 0, 0, 0.2) 1px 1px 3px;
-
-  background-color: rgba(255, 255, 255, 0.9);
+  background-color: var(--lightBox);
   padding: 24px 32px;
   margin-bottom: 1.5rem;
 }
 
+/* Estilos para los elementos dentro del contenedor principal en modo oscuro */
+.reactApp > div[data-theme="dark"] {
+  background-color: var(--lightBox);
+}
+
+/* Estilos para los elementos "p" dentro de la aplicación */
 .reactApp p {
   color: rgb(114, 126, 142);
 }
 
 /* Estilos para la clase "search" */
 .search {
-  /* Elementos flexibles en fila con alineación centrada */
   display: flex;
   flex-direction: row;
   justify-content: center;
-  /* Estilo para el contenedor "div" dentro de "search" */
-
   height: 3.25rem;
-
   display: flex;
-
   align-items: center;
-
-  /* Estilos para el elemento "input" dentro de "div" */
   input {
     background-color: rgba(255, 255, 255, 0);
     margin-left: 1.5rem;
@@ -65,56 +138,39 @@ body > h1 {
     font-size: 1.25rem;
     color: rgb(114, 126, 142);
     width: 100%;
-    /* Elimina el contorno al enfocar */
     outline: none;
-    /* Transforma el texto a mayúsculas y minúsculas */
     text-transform: capitalize;
   }
-  /* Estilos para la clase "icon" dentro de "div" */
   .icon {
     margin-right: 1rem;
-    /* Color de texto blanco */
     color: rgb(114, 126, 142);
-    /* Cursor en forma de puntero */
     cursor: pointer;
     width: 20px;
     height: 20px;
-    /* Transición suave de propiedades con duración de 0.2 segundos */
     transition: all 0.2s ease-out;
-    /* Efecto de escala al hacer hover */
     &:hover {
-      transform: scale(1.25);
+      transform: scale(1.4);
     }
   }
 }
 
 /* Estilos para la clase "time" */
 .time {
-  /* Elementos flexibles en fila con alineación centrada */
   display: flex;
   flex-direction: row;
   justify-content: center;
-  /* Espacio en la parte superior, ajustable según necesidades */
   margin-top: 0.5rem;
-  /* Estilos para el elemento "p" dentro de "time" */
   p {
-    /* Color de texto blanco */
-
-    /* Tamaño de fuente */
     font-size: 1.25rem;
-    /* Peso de fuente ligero */
     font-weight: 200;
   }
 }
 
 /* Estilos para la clase "location" */
 .location {
-  /* Elementos flexibles */
   display: flex;
-  /* Alineación vertical y horizontal centrada */
   align-items: center;
   justify-content: center;
-  /* Elimina el margen predeterminado del elemento "p" */
 }
 
 /* Estilos para la clase "skyImage" */
@@ -123,6 +179,7 @@ body > h1 {
   height: 10rem;
 }
 
+/* Estilos para el botón */
 button {
   background: none;
   border: none;
@@ -131,98 +188,63 @@ button {
   font-size: inherit;
   color: inherit;
   cursor: pointer;
-
 }
 
+/* Estilos para el botón "button_up" */
 .button_up {
   color: rgb(114, 126, 142);
   &:hover {
-    transform: scale(1.02);
+    transform: scale(1.1);
   }
 }
 
-h3{
-  padding-left: 1rem;
-}
-
-
-/* Estilos para la clase "weatherDetails" */
+/* Estilos para el contenedor "weatherDetails" */
 .weatherDetails {
-  /* Estilos para la clase "skyclimate" dentro de "weatherDetails" */
   .skyclimate {
-    /* Elementos flexibles con alineación centrada */
     display: flex;
     align-items: center;
     justify-content: center;
-    /* Tamaño de fuente */
     font-size: 1.25rem;
-    /* Color de texto cyan */
     p {
       color: rgb(31, 179, 179);
     }
   }
-
-  /* Estilos para la clase "actualTemperature" dentro de "weatherDetails" */
   .actualTemperature {
-    /* Elementos flexibles en fila con alineación centrada */
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-around;
-
-    /* Espacio en la parte superior */
     padding-top: 0.75rem;
-    /* Estilos para el elemento "p" dentro de "actualTemperature" */
     p {
-      /* Tamaño de fuente grande */
       font-size: 3rem;
     }
-
-    /* Estilos para la clase "details" dentro de "actualTemperature" */
     .details {
-      /* Elementos flexibles en columna con espacio vertical entre ellos */
       display: flex;
       flex-direction: column;
       gap: 0.5rem;
-      /* Estilos para el elemento "div" dentro de "details" */
       div {
-        /* Elementos flexibles con peso de fuente ligero */
         display: flex;
         font-weight: 300;
-        /* Tamaño de fuente pequeño */
         font-size: 1rem;
         align-items: center;
         justify-content: center;
-        /* Estilos para el elemento "span" dentro de "div" */
         span {
-          /* Peso de fuente medio */
           font-weight: 500;
-          /* Margen izquierdo */
           margin-left: 0.25rem;
         }
       }
     }
   }
-
-  /* Estilos para la clase "todayTemperature" dentro de "weatherDetails" */
   .todayTemperature {
-    /* Elementos flexibles en fila con alineación centrada y espacio entre ellos */
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
     gap: 0.75rem;
-    /* Color de texto blanco */
-
-    /* Tamaño de fuente pequeño */
     font-size: 1rem;
-    /* Espacio en la parte superior */
     padding-top: 0.75rem;
-    /* Estilos para el elemento "p" dentro de "todayTemperature" */
     p {
-      /* Estilos para el elemento "span" dentro de "p" */
       span {
-        /* Tamaño de fuente */
         font-size: 1.1rem;
       }
     }
@@ -231,38 +253,41 @@ h3{
 
 /* Estilos para la clase "forecast" */
 .forecast {
-  /* Elementos flexibles en columna con alineación al inicio */
   display: flex;
   justify-content: flex-start;
   flex-direction: column;
-  /* Espacio en la parte superior, ajustable según necesidades */
   margin-top: 0.5rem;
-  /* Estilos para el elemento "hr" dentro de "forecast" */
+
+  h3 {
+    margin-left: 19px;
+  }
+  
   hr {
-    /* Ancho completo */
     width: 100%;
-    /* Elimina el margen predeterminado del elemento "hr" */
     margin-top: 0;
     margin-bottom: 0;
   }
-
-  /* Estilos para la clase "carousel" dentro de "forecast" */
   .carousel {
-    /* Elementos flexibles en fila con alineación centrada y espacio entre ellos */
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    /* Estilos para el elemento "div" dentro de "carousel" */
     div {
-      /* Elementos flexibles en columna con espacio vertical entre ellos */
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: space-between;
-      /* Tamaño de fuente pequeño */
       p {
         font-size: 0.875rem;
+      }
+    }
+    @media screen and (max-width: 1123px) {
+      flex-direction: column;
+      div {
+        align-items: center;
+        p {
+          font-size: 1rem;
+        }
       }
     }
   }

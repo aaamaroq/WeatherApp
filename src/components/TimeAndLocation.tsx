@@ -1,13 +1,24 @@
 import React from "react";
 import { formatToLocalTime } from "../service/WeatherService";
 
+/**
+ * Propiedades para el componente TimeAndLocation.
+ * @interface TimeAndLocationProps
+ * @property {Record<string, string>} weather - Datos de tiempo y ubicación.
+ */
 interface TimeAndLocationProps {
   weather: Record<string, string>;
 }
 
+/**
+ * Componente que muestra la hora local y la ubicación.
+ * @function TimeAndLocation
+ * @param {TimeAndLocationProps} props - Propiedades del componente.
+ * @returns {JSX.Element} - Elemento JSX que representa el componente de hora y ubicación.
+ */
 function TimeAndLocation({ weather }: TimeAndLocationProps) {
   return (
-    <div>
+    <div className="lightMode">
       <div className="time">
         <p>{formatToLocalTime(Number(weather.dt), weather.timezone)}</p>
       </div>
