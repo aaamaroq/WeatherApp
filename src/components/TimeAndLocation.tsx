@@ -12,7 +12,7 @@ function TimeAndLocation({ weather }: TimeAndLocationProps) {
         <p>{formatToLocalTime(Number(weather.dt), weather.timezone)}</p>
       </div>
       <div className="location">
-        <p>{`${weather.name}, ${weather.country}`}</p>
+        <h1>{`${weather.name}, ${weather.country}`}</h1>
       </div>
     </div>
   );

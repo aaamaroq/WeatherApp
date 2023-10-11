@@ -2,7 +2,7 @@ import React from "react";
 import { BsFillSunFill, BsSunsetFill } from "react-icons/bs";
 import { FaTemperatureFull } from "react-icons/fa6";
 import { GiWaterDrop } from "react-icons/gi";
-import { BiUpArrowAlt, BiDownArrowAlt } from "react-icons/bi";
+import { BiUpArrowAlt, BiDownArrowAlt,BiWind } from "react-icons/bi";
 import { formatToLocalTime, iconUrlFromCode } from "../service/WeatherService";
 
 interface WeatherDetailsProps {
@@ -33,7 +33,7 @@ function WeatherDetails({ weather }: WeatherDetailsProps) {
           </div>
 
           <div>
-            <FaTemperatureFull />
+            <BiWind />
             Wind:
             <span>{`${weather.speed.toFixed()}km/h`}</span>
           </div>
@@ -49,19 +49,19 @@ function WeatherDetails({ weather }: WeatherDetailsProps) {
 
         <BsSunsetFill />
         <p>
-          Set: <span>07:35 PM</span>
+          Set: <span>{formatToLocalTime(weather.sunset,weather.timezone, "hh:mm a")}</span>
         </p>
         <p>|</p>
 
         <BiUpArrowAlt />
         <p>
-          High: <span>45º</span>
+          High: <span>{formatToLocalTime(weather.temp_max,weather.timezone, "hh:mm a")}</span>
         </p>
         <p>|</p>
 
         <BiDownArrowAlt />
         <p>
-          Low: <span>40º</span>
+          Low: <span>{formatToLocalTime(weather.temp_min,weather.timezone, "hh:mm a")}</span>
         </p>
       </div>
     </div>

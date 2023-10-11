@@ -1,6 +1,20 @@
+import { DateTime } from "luxon";
+
+// Importa las imágenes utilizando rutas relativas
+import sunImage from '../images/sun.png';
+import someCloudsImage from '../images/SomeClouds.png';
+import otherCloudsImage from '../images/otherClouds.png';
+import aBitRainImage from '../images/aBitRain.png';
+import rainImage from '../images/rain.png';
+import electricStormImage from '../images/electricStorm.png';
+import snowImage from '../images/snow.png';
+import fogImage from '../images/fog.png';
+
 // Definir la clave de API y la URL base
 const API_KEY: string = "d3f3bdcdfddd816a48b7cbdd6e66b526";
 const BASE_URL: string = "https://api.openweathermap.org/data/2.5";
+
+export type Query = { q: string } | { lat: number; lon: number };
 
 // Función para obtener datos meteorológicos
 const getWeatherData = (
@@ -11,10 +25,9 @@ const getWeatherData = (
   const url = new URL(`${BASE_URL}/${infoType}`);
   url.search = new URLSearchParams({
     ...searchParams,
+    units: "metric",
     appid: API_KEY,
   }).toString();
-
-  
 
   // Realizar una solicitud fetch y analizar la respuesta como JSON
   return fetch(url.toString()).then((res) => res.json());
@@ -71,7 +84,7 @@ const formatForecastWeather = (data: any): Record<string, any> => {
   hourly = hourly.slice(1, 6).map((d: any) => {
     return {
       title: formatToLocalTime(d.dt, timezone, "hh:mm a"),
-      temp: d.temp.day,
+      temp: d.temp,
       icon: d.weather[0].icon,
     };
   });
@@ -95,7 +108,7 @@ const getFormattedWeatherData = async (
   const formattedForecastWeather = await getWeatherData("onecall", {
     lat,
     lon,
-    exclude: 'current,minutely,alerts'
+    exclude: "current,minutely,alerts",
   }).then(formatForecastWeather);
 
   // Devolver los datos formateados combinados
@@ -107,26 +120,46 @@ const formatToLocalTime = (
   secs: number,
   zone: string,
   format: string = "cccc, dd LLL yyyy' | Local time: 'hh:mm a"
-): string => {
-  const date = new Date(secs * 1000); // Multiplicamos por 1000 para convertir de segundos a milisegundos
-  const options: Intl.DateTimeFormatOptions = {
-      weekday: "long",
-      day: "2-digit",
-      month: "short",
-      year: "numeric",
-      hour: "2-digit",
-      minute: "2-digit",
-      hour12: true,
-      timeZone: zone,
-  };
-  return date.toLocaleDateString(undefined, options);
+) => {
+  return DateTime.fromSeconds(secs).setZone(zone).toFormat(format);
 };
 
 
-const iconUrlFromCode = (code: string) =>
-  `http://openweathermap.org/img/wn/${code}@2x.png`;
+const iconUrlFromCode = (code: string) => {
+  switch (code) {
+    case "01d":
+    case "01n":
+      return sunImage;
+    case "02d":
+    case "02n":
+      return someCloudsImage;
+    case "03d":
+    case "03n":
+      return otherCloudsImage;
+    case "04d":
+    case "04n":
+      return otherCloudsImage;
+    case "09d":
+    case "09n":
+      return aBitRainImage;
+    case "10d":
+    case "10n":
+      return rainImage;
+    case "11d":
+    case "11n":
+      return electricStormImage;
+    case "13d":
+    case "13n":
+      return snowImage;
+    case "50d":
+    case "50n":
+      return fogImage;
+    default:
+      return "Descripción no encontrada";
+  }
+};
 
 
 export default getFormattedWeatherData;
 
-export { formatToLocalTime, iconUrlFromCode }
+export { formatToLocalTime, iconUrlFromCode };
