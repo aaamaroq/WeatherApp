@@ -6,6 +6,11 @@ The Weather App is a web application that allows you to check the current weathe
 
 Note: AI-generated images have been added for weather visualization.
 
+![image](https://github.com/aaamaroq/WeatherApp/assets/100299154/afdeb00b-ef90-4581-a494-b967c70b1648)
+![image](https://github.com/aaamaroq/WeatherApp/assets/100299154/a4787163-35c6-4ba6-a3af-6d2560f82fc6)
+
+
+
 ## Technologies Used
 
 - **HTML5**: Markup language for web page structure.
