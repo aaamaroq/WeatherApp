@@ -20,10 +20,10 @@ function TimeAndLocation({ weather }: TimeAndLocationProps) {
   return (
     <div className="lightMode">
       <div className="time">
-        <p>{formatToLocalTime(Number(weather.dt), weather.timezone)}</p>
+        <h2>{formatToLocalTime(Number(weather.dt), weather.timezone)}</h2>
       </div>
       <div className="location">
-        <h1>{`${weather.name}, ${weather.country}`}</h1>
+        <h2>{`${weather.name}, ${weather.country}`}</h2>
       </div>
     </div>
   );

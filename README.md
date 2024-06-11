@@ -1,73 +1,65 @@
-
----
-
 # Weather App
 
-## Introducción
+## Introduction
 
-La Weather App es una aplicación web que te permite consultar el clima actual y la previsión del tiempo en cualquier lugar del mundo. Puedes buscar una ubicación específica o utilizar la geolocalización para obtener datos meteorológicos precisos.
+The Weather App is a web application that allows you to check the current weather and forecast anywhere in the world. You can search for a specific location or use geolocation to obtain accurate weather data.
 
-![image](https://github.com/aaamaroq/WeatherApp/assets/100299154/c3adfe70-49e4-4358-af6a-cc1c9109a691)
-![image](https://github.com/aaamaroq/WeatherApp/assets/100299154/7f6ea735-97fc-43cc-9bf0-17f6a18dd38d)
+Note: AI-generated images have been added for weather visualization.
 
+## Technologies Used
 
-## Tecnologías Utilizadas
+- **HTML5**: Markup language for web page structure.
+- **CSS3**: Cascading Style Sheets for design and presentation.
+- **JavaScript**: Programming language for client-side interactivity.
+- **React**: JavaScript library for building user interfaces.
+- **TypeScript**: JavaScript superset for robust development.
+- **Sass**: CSS preprocessor for advanced styles.
+- **DotEnv**: To manage environment variables.
 
-- **HTML5**: Lenguaje de marcado para la estructura de la página web.
-- **CSS3**: Hojas de estilo en cascada para el diseño y la presentación.
-- **JavaScript**: Lenguaje de programación para la interactividad del lado del cliente.
-- **React**: Biblioteca de JavaScript para la creación de la interfaz de usuario.
-- **TypeScript**: Superset de JavaScript para un desarrollo más robusto.
-- **Sass**: Preprocesador CSS para estilos más avanzados.
-- **DotEnv**: Para gestionar las variables de entorno.
+## Purpose
 
-## Propósito
+The purpose of this application is to provide users with up-to-date information on weather conditions anywhere in the world. Whether you need to know the weather forecast before a trip or simply are interested in the weather at your current location, the Weather App gives you the information you need quickly and easily.
 
-El propósito de esta aplicación es proporcionar a los usuarios información actualizada sobre las condiciones meteorológicas en cualquier lugar del mundo. Ya sea que necesites conocer el pronóstico del tiempo antes de un viaje o simplemente estés interesado en el clima de tu ubicación actual, la Weather App te brinda la información que necesitas de manera rápida y sencilla.
+## Description
 
-## Descripción
+The Weather App was developed using React, a popular JavaScript framework. The application integrates with weather data services to retrieve accurate, real-time information. It employs a user-friendly interface that allows users to search locations and view weather details such as temperature, humidity, and wind speed. Additionally, it provides a forecast view for both the current day and the upcoming days.
 
-La Weather App se desarrolló utilizando React, un popular marco de trabajo de JavaScript. La aplicación se integra con servicios de datos meteorológicos para recuperar información precisa y en tiempo real. Utiliza una interfaz de usuario amigable que permite a los usuarios buscar ubicaciones y ver detalles meteorológicos, como la temperatura, la humedad y la velocidad del viento. Además, ofrece una vista de pronóstico tanto para el día actual como para los próximos días.
+# Inquiry
 
-# Consulta
+You can check out the application deployed at the following [link](https://weatherapp-azure-eta.vercel.app/).
 
-Puede consultar la aplicación en el despliegue realizado en el siguiente [enlace](https://weatherapp-azure-eta.vercel.app/).
+## How It's Programmed
 
-## Cómo Se Ha Programado
+The application is programmed following best practices of web development with React. It is divided into several components, such as "HeaderApp", "Search", "TimeAndLocation", "Temperature", "Forecast", "WeatherDetails", and "WeatherModal". Each component has its specific function in the application and communicates with others to display weather information clearly and orderly.
 
-La aplicación se ha programado siguiendo las mejores prácticas de desarrollo web con React. Se ha dividido en varios componentes, como "HeaderApp", "Search", "TimeAndLocation", "Temperature", "Forecast", "WeatherDetails" y "WeatherModal". Cada componente tiene su función específica en la aplicación y se comunica con otros para mostrar la información meteorológica de manera clara y ordenada.
+## How to Install
 
-## Cómo Instalar
+To run the application on your local environment, follow these steps:
 
-Para ejecutar la aplicación en tu entorno local, sigue estos pasos:
+1. Make sure you have Node.js installed on your computer. If you don't have it, you can download it [here](https://nodejs.org/).
 
-1. Asegúrate de tener Node.js instalado en tu computadora. Si no lo tienes, puedes descargarlo [aquí](https://nodejs.org/).
-
-2. Clona este repositorio de GitHub en tu máquina:
+2. Clone this GitHub repository to your machine:
 
    ```bash
    git clone https://github.com/aaamaroq/weather-app.git
    ```
 
-3. Navega hasta el directorio del proyecto:
+3. Navigate to the project directory:
 
    ```bash
    cd weatherApp
    ```
 
-4. Instala las dependencias del proyecto ejecutando:
+4. Install project dependencies by running:
 
    ```bash
    npm install
    ```
 
-5. Una vez completada la instalación, inicia la aplicación con el siguiente comando:
+5. Once the installation is complete, start the application with the following command:
 
    ```bash
    npm start
    ```
 
-6. La aplicación se abrirá en tu navegador web predeterminado. ¡Ahora puedes buscar el clima en cualquier lugar del mundo!
-
-
----
+6. The application will open in your default web browser. Now you can search for weather anywhere in the world!

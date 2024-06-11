@@ -9,7 +9,7 @@ import DarkModeToggle from './DarkModeToggle';
 function HeadApp() {
   return (
     <header>
-      <h1>Weather Test</h1>
+      <div className="combined-title">Weather App</div>
       <DarkModeToggle />
     </header>
   );

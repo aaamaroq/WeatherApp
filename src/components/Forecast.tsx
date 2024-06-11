@@ -36,7 +36,7 @@ function Forecast({ itemsToday, itemsWeed }: ForecastProps) {
   return (
     <div className="lightMode">
       <div className="forecast">
-        <div>
+        <div className="forescastOptions">
           <button
             onClick={() => toggleTab("today")}
             className={activeTab === "weed" ? "button_up" : ""}
@@ -54,7 +54,7 @@ function Forecast({ itemsToday, itemsWeed }: ForecastProps) {
         <div className="carousel">
           {items.map((item: any) => (
             <div key={item.id}>
-              <h3>{item.title}</h3>
+              <h4>{item.title}</h4>
               <img
                 src={iconUrlFromCode(item.icon)}
                 className="skyImage"

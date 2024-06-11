@@ -4,8 +4,8 @@ html {
   font-family: "Lato", sans-serif;
   background: linear-gradient(var(--lightBgStart), var(--lightBgEnd));
   --lightBtn: #050a4a;
-  --lightBgStart: cyan;
-  --lightBgEnd: lightblue; /* Cambia este color al que desees para el degradado */
+  --lightBgStart: #92daea;
+  --lightBgEnd: #275fa5; /* Cambia este color al que desees para el degradado */
   --lightBox: rgba(255, 255, 255, 0.9);
 }
 
@@ -14,9 +14,9 @@ html[data-theme="dark"] {
   font-family: "Lato", sans-serif;
   background: linear-gradient(var(--darkBgStart), var(--darkBgEnd));
   --lightBtn: #ffbd07;
-  --darkBgStart: #1f044e;
+  --darkBgStart: #32087d;
   --darkBgEnd: #0a1039; /* Cambia este color al que desees para el degradado */
-  --lightBox: rgba(5, 26, 51, 0.9);
+  --lightBox: rgba(0, 0, 0, 0.9);
 }
 
 /* Estilos para la sección de encabezado */
@@ -26,6 +26,32 @@ header {
   align-items: center;
   justify-content: space-between;
   padding: 14px 14px;
+}
+
+.combined-title {
+  font-size: 40px;
+  font-weight: bold;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.9);
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+  border: 2px solid rgba(255, 255, 255, 0.9);
+  padding: 10px;
+  margin: 20px;
+  border-radius: 5px;
+  animation: rotate 5s infinite;
+  display: inline-block;
+
+  @keyframes rotate {
+    0% {
+      transform: rotate(0deg);
+    }
+    50% {
+      transform: rotate(4deg);
+    }
+    100% {
+      transform: rotate(0deg);
+    }
+  }
 }
 
 /* Estilos para el interruptor de modo oscuro */
@@ -93,14 +119,25 @@ body > h1 {
   font-size: 1.9rem;
 }
 
-/* Estilos para la raíz del contenido de la aplicación */
-#root {
-  margin: 7% 7%;
-}
+// Definir una variable para la anchura inicial del contenedor
+$ancho-inicial: 70%;
 
-/* Estilos para el contenedor principal de la aplicación */
+// Definir una variable para la anchura del contenedor en dispositivos móviles
+$ancho-movil: 95%;
+
+// Definición de variable para el ancho del contenedor en dispositivos móviles
+$ancho-contenedor-movil: 90%;
+
+// Estilos para el contenedor principal de la aplicación
 .reactApp {
-  width: 100%;
+  width: 70%; // Ancho por defecto
+  margin: 15px auto;
+
+  // Media query para dispositivos móviles
+  @media only screen and (max-width: 768px) {
+    // Ajusta el valor según tus necesidades
+    width: $ancho-contenedor-movil;
+  }
 }
 
 /* Estilos para los elementos dentro del contenedor principal */
@@ -116,6 +153,7 @@ body > h1 {
 /* Estilos para los elementos dentro del contenedor principal en modo oscuro */
 .reactApp > div[data-theme="dark"] {
   background-color: var(--lightBox);
+  
 }
 
 /* Estilos para los elementos "p" dentro de la aplicación */
@@ -159,11 +197,7 @@ body > h1 {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  margin-top: 0.5rem;
-  p {
-    font-size: 1.25rem;
-    font-weight: 200;
-  }
+  margin-top: 5px;
 }
 
 /* Estilos para la clase "location" */
@@ -171,12 +205,15 @@ body > h1 {
   display: flex;
   align-items: center;
   justify-content: center;
+  h2 {
+    margin: 0;
+  }
 }
 
 /* Estilos para la clase "skyImage" */
 .skyImage {
-  width: 10rem;
-  height: 10rem;
+  width: 150px;
+  height: 150px;
 }
 
 /* Estilos para el botón */
@@ -200,12 +237,14 @@ button {
 
 /* Estilos para el contenedor "weatherDetails" */
 .weatherDetails {
+  margin-top: 50px;
   .skyclimate {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.25rem;
+    font-size: 25px;
     p {
+      margin: 0;
       color: rgb(31, 179, 179);
     }
   }
@@ -213,24 +252,25 @@ button {
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-around;
-    padding-top: 0.75rem;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+
     p {
-      font-size: 3rem;
+      font-size: 30px;
     }
     .details {
       display: flex;
       flex-direction: column;
-      gap: 0.5rem;
+      gap: 5px;
       div {
         display: flex;
         font-weight: 300;
-        font-size: 1rem;
+        font-size: 15px;
         align-items: center;
         justify-content: center;
         span {
           font-weight: 500;
-          margin-left: 0.25rem;
+          margin-left: 5px;
         }
       }
     }
@@ -240,12 +280,15 @@ button {
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    gap: 0.75rem;
-    font-size: 1rem;
-    padding-top: 0.75rem;
-    p {
-      span {
-        font-size: 1.1rem;
+    gap: 25px;
+    font-size: 17px;
+    flex-wrap: wrap;
+    div {
+      display: flex;
+      align-items: center;
+      p {
+        font-size: 15px;
+        margin-left: 5px;
       }
     }
   }
@@ -256,12 +299,13 @@ button {
   display: flex;
   justify-content: flex-start;
   flex-direction: column;
-  margin-top: 0.5rem;
+  margin-top: 50px;
 
-  h3 {
-    margin-left: 19px;
+  .forescastOptions {
+    display: flex;
+    justify-content: space-around;
   }
-  
+
   hr {
     width: 100%;
     margin-top: 0;
@@ -271,23 +315,15 @@ button {
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;
+    flex-wrap: wrap;
+    justify-content: space-around;
     div {
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: space-between;
       p {
-        font-size: 0.875rem;
-      }
-    }
-    @media screen and (max-width: 1123px) {
-      flex-direction: column;
-      div {
-        align-items: center;
-        p {
-          font-size: 1rem;
-        }
+        font-size: 17px;
       }
     }
   }

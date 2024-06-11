@@ -51,28 +51,34 @@ function WeatherDetails({ weather }: WeatherDetailsProps) {
       </div>
 
       <div className="todayTemperature">
-        <BsFillSunFill />
-        <p>
-          Rise: <span>{formatToLocalTime(weather.sunrise, weather.timezone, "hh:mm a")}</span>
-        </p>
-        <p>|</p>
-
-        <BsSunsetFill />
-        <p>
-          Set: <span>{formatToLocalTime(weather.sunset, weather.timezone, "hh:mm a")}</span>
-        </p>
-        <p>|</p>
-
-        <BiUpArrowAlt />
-        <p>
-          High: <span>{formatToLocalTime(weather.temp_max, weather.timezone, "hh:mm a")}</span>
-        </p>
-        <p>|</p>
-
-        <BiDownArrowAlt />
-        <p>
-          Low: <span>{formatToLocalTime(weather.temp_min, weather.timezone, "hh:mm a")}</span>
-        </p>
+        <div>
+          <BsFillSunFill />
+          <p>
+            Rise:{" "}
+            {formatToLocalTime(weather.sunrise, weather.timezone, "hh:mm a")}
+          </p>
+        </div>
+        <div>
+          <BsSunsetFill />
+          <p>
+            Set:{" "}
+            {formatToLocalTime(weather.sunset, weather.timezone, "hh:mm a")}
+          </p>
+        </div>
+        <div>
+          <BiUpArrowAlt />
+          <p>
+            High:{" "}
+            {formatToLocalTime(weather.temp_max, weather.timezone, "hh:mm a")}
+          </p>
+        </div>
+        <div>
+          <BiDownArrowAlt />
+          <p>
+            Low:{" "}
+            {formatToLocalTime(weather.temp_min, weather.timezone, "hh:mm a")}
+          </p>
+        </div>
       </div>
     </div>
   );
