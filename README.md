@@ -46,7 +46,7 @@ To run the application on your local environment, follow these steps:
 2. Clone this GitHub repository to your machine:
 
    ```bash
-   git clone https://github.com/aaamaroq/weather-app.git
+   git clone https://github.com/aaamaroq/WeatherApp
    ```
 
 3. Navigate to the project directory:
