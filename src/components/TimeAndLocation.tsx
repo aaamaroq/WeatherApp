@@ -18,12 +18,16 @@ interface TimeAndLocationProps {
  */
 function TimeAndLocation({ weather }: TimeAndLocationProps) {
   return (
-    <div className="lightMode">
-      <div className="time">
-        <h2>{formatToLocalTime(Number(weather.dt), weather.timezone)}</h2>
+    <div className="flex flex-col items-center justify-center text-white drop-shadow-md">
+      <div className="flex items-center justify-center my-3">
+        <p className="text-xl font-extralight opacity-90">
+          {formatToLocalTime(Number(weather.dt), weather.timezone)}
+        </p>
       </div>
-      <div className="location">
-        <h2>{`${weather.name}, ${weather.country}`}</h2>
+      <div className="flex items-center justify-center">
+        <h2 className="text-5xl font-semibold tracking-tight">
+          {`${weather.name}, ${weather.country}`}
+        </h2>
       </div>
     </div>
   );

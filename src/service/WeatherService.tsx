@@ -88,27 +88,25 @@ const formatCurrentWeather = (data: any): Record<string, any> => {
   };
 };
 
-// Función para formatear los datos del pronóstico meteorológico.
-/**
- * Formatea los datos del pronóstico meteorológico.
- *
- * @param {Object} data - Datos crudos del pronóstico meteorológico obtenidos de la API.
- * @returns {Object} - Datos formateados con información relevante.
- */
+// Función para formatear los datos del pronóstico meteorológico (Standard Forecast API).
 const formatForecastWeather = (data: any): Record<string, any> => {
-  let { timezone, daily, hourly } = data;
-  daily = daily.slice(1, 6).map((d: any) => {
+  let { list, city } = data;
+  const timezone = city.timezone;
+
+  // Extract hourly (next 5 counts)
+  const hourly = list.slice(0, 5).map((d: any) => {
     return {
-      title: formatToLocalTime(d.dt, timezone, "ccc"),
-      temp: d.temp.day,
+      title: DateTime.fromSeconds(d.dt).setZone(`UTC${timezone >= 0 ? '+' : ''}${timezone / 3600}`).toFormat("hh:mm a"),
+      temp: d.main.temp,
       icon: d.weather[0].icon,
     };
   });
 
-  hourly = hourly.slice(1, 6).map((d: any) => {
+  // Extract daily (approximate daily by taking noon entries or one per day)
+  const daily = list.filter((d: any) => d.dt_txt.includes("12:00:00")).slice(0, 5).map((d: any) => {
     return {
-      title: formatToLocalTime(d.dt, timezone, "hh:mm a"),
-      temp: d.temp,
+      title: DateTime.fromSeconds(d.dt).setZone(`UTC${timezone >= 0 ? '+' : ''}${timezone / 3600}`).toFormat("ccc"),
+      temp: d.main.temp,
       icon: d.weather[0].icon,
     };
   });
@@ -117,32 +115,35 @@ const formatForecastWeather = (data: any): Record<string, any> => {
 };
 
 // Función para obtener datos meteorológicos formateados.
-/**
- * Obtiene datos meteorológicos formateados que incluyen datos actuales y pronóstico.
- *
- * @param {Object} searchParams - Parámetros de búsqueda para la solicitud.
- * @returns {Promise<Object>} - Promesa que resuelve con los datos formateados.
- */
 const getFormattedWeatherData = async (
   searchParams: Record<string, any>
 ): Promise<Record<string, any>> => {
-  // Obtener datos meteorológicos actuales y formatearlos
-  const formattedCurrentWeather = await getWeatherData(
-    "weather",
-    searchParams
-  ).then(formatCurrentWeather);
+  try {
+    // Obtener datos meteorológicos actuales
+    const formattedCurrentWeather = await getWeatherData(
+      "weather",
+      searchParams
+    ).then(formatCurrentWeather);
 
-  const { lat, lon } = formattedCurrentWeather;
+    const { lat, lon } = formattedCurrentWeather;
 
-  // Obtener datos del pronóstico meteorológico y formatearlos
-  const formattedForecastWeather = await getWeatherData("onecall", {
-    lat,
-    lon,
-    exclude: "current,minutely,alerts",
-  }).then(formatForecastWeather);
+    try {
+      // Intentar obtener pronóstico usando la API estándar (más compatible)
+      const formattedForecastWeather = await getWeatherData("forecast", {
+        lat,
+        lon,
+      }).then(formatForecastWeather);
 
-  // Devolver los datos formateados combinados
-  return { ...formattedCurrentWeather, ...formattedForecastWeather };
+      return { ...formattedCurrentWeather, ...formattedForecastWeather };
+    } catch (forecastError) {
+      console.warn("Forecast data could not be loaded:", forecastError);
+      // Devolver solo el clima actual si el pronóstico falla
+      return { ...formattedCurrentWeather, daily: [], hourly: [] };
+    }
+  } catch (error) {
+    console.error("Failed to fetch weather data:", error);
+    throw error;
+  }
 };
 
 // Función para formatear la hora local.

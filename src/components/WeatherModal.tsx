@@ -1,42 +1,6 @@
 import Modal from "react-modal";
 import React from "react";
-
-const customStyles = {
-  overlay: {
-    backgroundColor: "rgba(0, 0, 0, 0.5)",
-    zIndex: 1000,
-  },
-  content: {
-    maxWidth: "600px",
-    width: "auto",
-    maxHeight: "160px",
-    height: "auto",
-    margin: "0 auto",
-    padding: "1.25rem",
-    borderRadius: "5px",
-    backgroundColor: "rgba(255, 255, 255, 0.85)",
-    boxShadow: "0 0.25rem 0.5rem rgba(0, 0, 0, 0.2)",
-  },
-  header: {
-    fontSize: "1.5rem",
-    marginBottom: "1rem",
-  },
-  closeButton: {
-    alignSelf: "flex-end",
-    fontSize: "1.25rem",
-    cursor: "pointer",
-  },
-  body: {
-    marginBottom: "1rem",
-  },
-  button: {
-    padding: "0.625rem 1.25rem",
-    borderRadius: "5px",
-    backgroundColor: "#007BFF",
-    color: "white",
-    cursor: "pointer",
-  },
-};
+import { motion } from "framer-motion";
 
 interface WeatherModalProps {
   isOpen: boolean;
@@ -51,25 +15,29 @@ function WeatherModal({
   title,
   description,
 }: WeatherModalProps) {
-  const handleModalClose = () => {
-    closeModal();
-  };
-
   return (
     <Modal
-      style={customStyles}
       isOpen={isOpen}
-      onRequestClose={handleModalClose}
+      onRequestClose={closeModal}
+      className="fixed inset-0 flex items-center justify-center p-4 z-[1000] outline-none"
+      overlayClassName="fixed inset-0 bg-black/40 backdrop-blur-sm z-[999]"
     >
-      <div style={customStyles.header}>{title}</div>
-      <div style={customStyles.body}>
-        <div>
-          <span>{description}</span>
-        </div>
-      </div>
-      <button style={customStyles.button} onClick={handleModalClose}>
-        Close
-      </button>
+      <motion.div
+        initial={{ opacity: 0, scale: 0.9 }}
+        animate={{ opacity: 1, scale: 1 }}
+        className="glass-card-dark p-8 max-w-md w-full text-white shadow-2xl relative"
+      >
+        <h2 className="text-2xl font-bold mb-4">{title}</h2>
+        <p className="text-white/80 mb-8 leading-relaxed">
+          {description}
+        </p>
+        <button
+          className="w-full py-3 bg-white/20 hover:bg-white/30 transition-colors rounded-xl font-semibold uppercase tracking-widest text-sm"
+          onClick={closeModal}
+        >
+          Got it
+        </button>
+      </motion.div>
     </Modal>
   );
 }

@@ -1,70 +1,59 @@
-# Weather App
+# SkyCast: "Sky Experience" v1.0.0 🌤️
 
 ## Introduction
 
-The Weather App is a web application that allows you to check the current weather and forecast anywhere in the world. You can search for a specific location or use geolocation to obtain accurate weather data.
+**SkyCast** is a premium web application that transforms weather checking into an immersive experience. It allows you to monitor current conditions and forecasts anywhere in the world with a modern, high-fidelity user interface.
 
-Note: AI-generated images have been added for weather visualization.
+![Main View](docs/images/main_view.png)
 
-![image](https://github.com/aaamaroq/WeatherApp/assets/100299154/afdeb00b-ef90-4581-a494-b967c70b1648)
-![image](https://github.com/aaamaroq/WeatherApp/assets/100299154/a4787163-35c6-4ba6-a3af-6d2560f82fc6)
+## Key Features
 
+- **💎 Glassmorphic UI**: High-end frosted glass aesthetics with dynamic blur and subtle depth.
+- **🎭 Dynamic Atmosphere**: Animated weather layers (Rain, Sun, Clouds, Thunderstorm) that respond to real-time data.
+- **🎬 Professional Animations**: Smooth, physics-based staggered entry and city transitions powered by Framer Motion.
+- **🌍 Global Search**: Quick access to any city with automatic fallback to standard forecast endpoints for reliability.
 
+### Visual States
+
+| Clear | Clouds | Rain | Snow | Dust |
+| :---: | :---: | :---: | :---: | :---: |
+| ![Clear](docs/images/weather_clear.png) | ![Clouds](docs/images/weather_clouds.png) | ![Rain](docs/images/weather_rain.png) | ![Snow](docs/images/weather_snow.png) | ![Dust](docs/images/weather_dust.png) |
 
 ## Technologies Used
 
-- **HTML5**: Markup language for web page structure.
-- **CSS3**: Cascading Style Sheets for design and presentation.
-- **JavaScript**: Programming language for client-side interactivity.
-- **React**: JavaScript library for building user interfaces.
-- **TypeScript**: JavaScript superset for robust development.
-- **Sass**: CSS preprocessor for advanced styles.
-- **DotEnv**: To manage environment variables.
-
-## Purpose
-
-The purpose of this application is to provide users with up-to-date information on weather conditions anywhere in the world. Whether you need to know the weather forecast before a trip or simply are interested in the weather at your current location, the Weather App gives you the information you need quickly and easily.
+- **React 18**: Core library for the UI.
+- **TypeScript**: Ensuring robust and type-safe code.
+- **Tailwind CSS 3**: Modern, performant styling system.
+- **Framer Motion**: State-of-the-art animation engine.
+- **Luxon**: Powerful date and time manipulation.
+- **OpenWeatherMap API**: Reliable source for real-time weather data.
 
 ## Description
 
-The Weather App was developed using React, a popular JavaScript framework. The application integrates with weather data services to retrieve accurate, real-time information. It employs a user-friendly interface that allows users to search locations and view weather details such as temperature, humidity, and wind speed. Additionally, it provides a forecast view for both the current day and the upcoming days.
+SkyCast v1.0.0 is the result of a complete rebranding effort ("Sky Experience"). The application features a custom atmospheric engine that renders visual effects behind glassmorphic information cards. It optimizes data fetching to provide a stable experience even with basic API keys, ensuring that weather details like feels-like temperature, humidity, wind speed, and staggered hourly/daily forecasts are always available and beautifully presented.
 
-# Inquiry
+## How to Install and Run
 
-You can check out the application deployed at the following [link](https://weatherapp-azure-eta.vercel.app/).
+To run the application in your local environment, follow these steps:
 
-## How It's Programmed
+1.  **Requirement**: Ensure you have [Node.js](https://nodejs.org/) installed.
+2.  **Clone the repository**:
+    ```bash
+    git clone https://github.com/aaamaroq/WeatherApp
+    ```
+3.  **Navigate to the directory**:
+    ```bash
+    cd WeatherApp
+    ```
+4.  **Install dependencies**:
+    ```bash
+    npm install
+    ```
+5.  **Start the app**:
+    ```bash
+    npm start
+    ```
+6.  The application will open at `http://localhost:3000`.
 
-The application is programmed following best practices of web development with React. It is divided into several components, such as "HeaderApp", "Search", "TimeAndLocation", "Temperature", "Forecast", "WeatherDetails", and "WeatherModal". Each component has its specific function in the application and communicates with others to display weather information clearly and orderly.
-
-## How to Install
-
-To run the application on your local environment, follow these steps:
-
-1. Make sure you have Node.js installed on your computer. If you don't have it, you can download it [here](https://nodejs.org/).
-
-2. Clone this GitHub repository to your machine:
-
-   ```bash
-   git clone https://github.com/aaamaroq/WeatherApp
-   ```
-
-3. Navigate to the project directory:
-
-   ```bash
-   cd weatherApp
-   ```
-
-4. Install project dependencies by running:
-
-   ```bash
-   npm install
-   ```
-
-5. Once the installation is complete, start the application with the following command:
-
-   ```bash
-   npm start
-   ```
-
-6. The application will open in your default web browser. Now you can search for weather anywhere in the world!
+---
+*Developed with ❤️ as an immersive weather experience.*

@@ -1,16 +1,9 @@
-import React from 'react';
-import DarkModeToggle from './DarkModeToggle';
-
-/**
- * Componente de encabezado de la aplicación.
- * @function HeadApp
- * @returns {JSX.Element} - Elemento JSX que representa el componente de encabezado.
- */
 function HeadApp() {
   return (
-    <header>
-      <div className="combined-title">Weather App</div>
-      <DarkModeToggle />
+    <header className="flex items-center justify-center py-6 mb-4">
+      <h1 className="text-3xl font-bold text-white tracking-widest uppercase drop-shadow-lg">
+        Sky<span className="font-light opacity-80">Cast</span>
+      </h1>
     </header>
   );
 }

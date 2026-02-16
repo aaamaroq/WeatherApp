@@ -1,68 +1,72 @@
 import { iconUrlFromCode } from "../service/WeatherService";
 import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
-/**
- * Propiedades para el componente Forecast.
- * @interface ForecastProps
- * @property {any} itemsToday - Datos del pronóstico para hoy.
- * @property {any} itemsWeed - Datos del pronóstico para la semana.
- */
 interface ForecastProps {
   itemsToday: any;
   itemsWeed: any;
 }
 
-/**
- * Componente que muestra un pronóstico del tiempo para hoy o la semana.
- * @function Forecast
- * @param {ForecastProps} props - Propiedades del componente.
- * @returns {JSX.Element} - Elemento JSX que representa el componente Forecast.
- */
 function Forecast({ itemsToday, itemsWeed }: ForecastProps) {
   const [activeTab, setActiveTab] = useState("today");
 
-  /**
-   * Función para cambiar entre las pestañas "today" y "weed".
-   * @function toggleTab
-   * @param {string} tab - Pestaña activa ("today" o "weed").
-   */
   const toggleTab = (tab: string) => {
     setActiveTab(tab);
   };
 
-  // Determinar qué conjunto de datos usar según la pestaña activa.
   const items = activeTab === "today" ? itemsToday : itemsWeed;
 
   return (
-    <div className="lightMode">
-      <div className="forecast">
-        <div className="forescastOptions">
+    <div className="glass-card p-6 flex flex-col h-full text-white">
+      <div className="flex items-center justify-between mb-4 pb-4 border-b border-white/10">
+        <div className="flex gap-4">
           <button
             onClick={() => toggleTab("today")}
-            className={activeTab === "weed" ? "button_up" : ""}
+            className={`text-sm uppercase tracking-widest transition-all ${activeTab === "today" ? "font-bold text-white scale-105" : "text-white/40 hover:text-white/70"
+              }`}
           >
-            <h3>Forecast Today</h3>
+            Hourly
           </button>
           <button
             onClick={() => toggleTab("weed")}
-            className={activeTab === "today" ? "button_up" : ""}
+            className={`text-sm uppercase tracking-widest transition-all ${activeTab === "weed" ? "font-bold text-white scale-105" : "text-white/40 hover:text-white/70"
+              }`}
           >
-            <h3>Forecast Week</h3>
+            Daily
           </button>
         </div>
-        <hr />
-        <div className="carousel">
-          {items.map((item: any) => (
-            <div key={item.id}>
-              <h4>{item.title}</h4>
-              <img
-                src={iconUrlFromCode(item.icon)}
-                className="skyImage"
-                alt=""
-              />
-              <p>{`${item.temp.toFixed()}º`}</p>
-            </div>
-          ))}
+      </div>
+
+      <div className="flex-1 overflow-x-auto pb-2 scrollbar-hide">
+        <div className="flex items-center justify-between min-w-max gap-6">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={activeTab}
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -20 }}
+              transition={{ duration: 0.3 }}
+              className="flex items-center justify-between w-full gap-6"
+            >
+              {items.map((item: any, index: number) => (
+                <motion.div
+                  key={item.title + index}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.1 }}
+                  className="flex flex-col items-center justify-center min-w-[70px]"
+                >
+                  <p className="text-xs font-light text-white/60 mb-1">{item.title}</p>
+                  <img
+                    src={iconUrlFromCode(item.icon)}
+                    className="w-12 h-12 drop-shadow-sm"
+                    alt=""
+                  />
+                  <p className="text-lg font-semibold mt-1">{`${item.temp.toFixed()}º`}</p>
+                </motion.div>
+              ))}
+            </motion.div>
+          </AnimatePresence>
         </div>
       </div>
     </div>
