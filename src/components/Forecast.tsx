@@ -1,4 +1,4 @@
-import { iconUrlFromCode } from "../service/WeatherService";
+import { getWeatherIconComponent } from "../service/WeatherService";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -48,23 +48,22 @@ function Forecast({ itemsToday, itemsWeed }: ForecastProps) {
               transition={{ duration: 0.3 }}
               className="flex items-center justify-between w-full gap-6"
             >
-              {items.map((item: any, index: number) => (
-                <motion.div
-                  key={item.title + index}
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.1 }}
-                  className="flex flex-col items-center justify-center min-w-[70px]"
-                >
-                  <p className="text-xs font-light text-white/60 mb-1">{item.title}</p>
-                  <img
-                    src={iconUrlFromCode(item.icon)}
-                    className="w-12 h-12 drop-shadow-sm"
-                    alt=""
-                  />
-                  <p className="text-lg font-semibold mt-1">{`${item.temp.toFixed()}º`}</p>
-                </motion.div>
-              ))}
+              {items.map((item: any, index: number) => {
+                const WeatherIcon = getWeatherIconComponent(item.icon);
+                return (
+                  <motion.div
+                    key={item.title + index}
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: index * 0.1 }}
+                    className="flex flex-col items-center justify-center min-w-[70px]"
+                  >
+                    <p className="text-xs font-light text-white/60 mb-1">{item.title}</p>
+                    <WeatherIcon className="w-12 h-12 drop-shadow-sm text-white" />
+                    <p className="text-lg font-semibold mt-1">{`${item.temp.toFixed()}º`}</p>
+                  </motion.div>
+                );
+              })}
             </motion.div>
           </AnimatePresence>
         </div>

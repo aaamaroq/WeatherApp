@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { queryData } from "../service/WeatherService";
-import { FaLocationDot } from "react-icons/fa6";
-import { FaSearch } from "react-icons/fa";
+import SearchIcon from "./icons/ui/SearchIcon";
+import LocationIcon from "./icons/ui/LocationIcon";
 import WeatherModal from "./WeatherModal";
 
 /**
@@ -126,11 +126,11 @@ function Search({ setQuery, weather }: SearchProps) {
           onKeyDown={handleKeyDown}
         />
         <div className="flex items-center gap-4 border-l border-white/20 pl-4">
-          <FaSearch
+          <SearchIcon
             className="text-white/80 hover:text-white cursor-pointer transition-transform hover:scale-125 w-5 h-5"
             onClick={() => triggerClick(() => handleSearchClick())}
           />
-          <FaLocationDot
+          <LocationIcon
             className="text-white/80 hover:text-white cursor-pointer transition-transform hover:scale-125 w-5 h-5"
             onClick={() => triggerClick(() => handleLocationClick())}
           />

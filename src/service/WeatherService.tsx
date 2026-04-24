@@ -1,14 +1,17 @@
 import { DateTime } from "luxon";
+import React from "react";
 
-// Importa las imágenes utilizando rutas relativas
-import sunImage from '../images/sun.png';
-import someCloudsImage from '../images/SomeClouds.png';
-import otherCloudsImage from '../images/otherClouds.png';
-import aBitRainImage from '../images/aBitRain.png';
-import rainImage from '../images/rain.png';
-import electricStormImage from '../images/electricStorm.png';
-import snowImage from '../images/snow.png';
-import fogImage from '../images/fog.png';
+// Importa los iconos SVG meteorológicos
+import {
+  ClearIcon,
+  FewCloudsIcon,
+  CloudsIcon,
+  LightRainIcon,
+  RainIcon,
+  ThunderstormIcon,
+  SnowIcon,
+  FogIcon,
+} from "../components/icons";
 
 // Definir la clave de API y la URL base
 const API_KEY: string = "d3f3bdcdfddd816a48b7cbdd6e66b526";
@@ -164,42 +167,47 @@ const formatToLocalTime = (
 };
 
 /**
- * Obtiene la URL de la imagen correspondiente a un código de icono meteorológico.
+ * Tipo para componentes de icono meteorológico.
+ */
+export type WeatherIconComponent = React.FC<{ className?: string }>;
+
+/**
+ * Obtiene el componente SVG correspondiente a un código de icono meteorológico.
  *
  * @param {string} code - Código de icono meteorológico.
- * @returns {string} - URL de la imagen.
+ * @returns {WeatherIconComponent} - Componente React SVG correspondiente.
  */
-const iconUrlFromCode = (code: string) => {
+const getWeatherIconComponent = (code: string): WeatherIconComponent => {
   switch (code) {
     case "01d":
     case "01n":
-      return sunImage;
+      return ClearIcon;
     case "02d":
     case "02n":
-      return someCloudsImage;
+      return FewCloudsIcon;
     case "03d":
     case "03n":
-      return otherCloudsImage;
+      return CloudsIcon;
     case "04d":
     case "04n":
-      return otherCloudsImage;
+      return CloudsIcon;
     case "09d":
     case "09n":
-      return aBitRainImage;
+      return LightRainIcon;
     case "10d":
     case "10n":
-      return rainImage;
+      return RainIcon;
     case "11d":
     case "11n":
-      return electricStormImage;
+      return ThunderstormIcon;
     case "13d":
     case "13n":
-      return snowImage;
+      return SnowIcon;
     case "50d":
     case "50n":
-      return fogImage;
+      return FogIcon;
     default:
-      return "Descripción no encontrada";
+      return ClearIcon;
   }
 };
 
@@ -207,6 +215,6 @@ const iconUrlFromCode = (code: string) => {
 export default getFormattedWeatherData;
 
 // Exportar funciones auxiliares.
-export { formatToLocalTime, iconUrlFromCode };
+export { formatToLocalTime, getWeatherIconComponent };
 
 export type queryData = { q: string } | { lat: number; lon: number };
